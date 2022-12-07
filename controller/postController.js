@@ -85,6 +85,7 @@ const likePost = async(req,res) =>{
 const timelinePost = async(req,res) =>{
     const userId = req.params.id;
     try {
+        
         const currentUserPost = await postModel.find({userId : userId})
         const followingPosts = await userModel.aggregate([
             {

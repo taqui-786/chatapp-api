@@ -4,9 +4,7 @@ const mongoose =require('mongoose');
 const postSchema = mongoose.Schema(
     {
         userId: {type:String, required:true},
-        username:{type:String},
-        userImage:{type:String},
-        userFullname:{type:String},
+       
         description: String,
         likes: [],
         image: String,

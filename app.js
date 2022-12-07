@@ -5,8 +5,8 @@ const bodyParser = require("body-parser");
 const Authroute = require("./routes/Authroute");
 const UserRoute = require("./routes/UserRoute");
 const postRoute = require("./routes/postRoute");
-const storyRoute = require("./routes/StoryRoutes");
 const ChatRoute = require("./routes/ChatRoute");
+const CommentRoute = require('./routes/commentRoute')
 const MessageRoute = require("./routes/MessageRoute");
 const cors = require("cors");
 
@@ -21,9 +21,9 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(Authroute);
 app.use(UserRoute);
 app.use(postRoute);
-app.use(storyRoute);
 app.use(ChatRoute);
 app.use(MessageRoute);
+app.use(CommentRoute);
 
 mongoose
   .connect(process.env.MONGO_DB, {
