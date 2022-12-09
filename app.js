@@ -9,6 +9,7 @@ const ChatRoute = require("./routes/ChatRoute");
 const CommentRoute = require('./routes/commentRoute')
 const MessageRoute = require("./routes/MessageRoute");
 const cors = require("cors");
+var http = require("https");
 
 const app = express();
 app.use(cors());
@@ -24,6 +25,11 @@ app.use(postRoute);
 app.use(ChatRoute);
 app.use(MessageRoute);
 app.use(CommentRoute);
+
+setInterval(function() {
+    http.get("https://chatapp-api-server.onrender.com");
+    console.log("Wakeup");
+}, 840000);
 
 mongoose
   .connect(process.env.MONGO_DB, {
