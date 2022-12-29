@@ -28,7 +28,6 @@ app.use(CommentRoute);
 
 setInterval(function() {
     http.get("https://chatapp-api-server.onrender.com");
-    console.log("Wakeup");
 }, 840000);
 
 mongoose

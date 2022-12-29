@@ -78,6 +78,24 @@ const likePost = async(req,res) =>{
         
     }
 }
+///////
+const getbyid = async(req,res) =>{
+    const userId = req.params.id;
+    try {
+        const final = []
+        const result = await postModel.find({userId})
+        result.map(async (itme)=> final.push(itme.userId) )
+        const finalData = []
+        for (let i = 0; i < final.length; i++) {
+            
+            finalData.push(await userModel.findById(final[i]))
+          }
+        res.status(200).json(finalData)
+    } catch (error) {
+        console.log(error);
+    }
+
+}
 
 
 // GET TIMELINE POST 
@@ -135,4 +153,4 @@ const Actionusers = async(req,res)=>{
 
 }
 
-module.exports = {createPost,getPost,updatePost,timelinePost,likePost,Actionusers,deletePost}
+module.exports = {createPost,getPost,updatePost,timelinePost,likePost,Actionusers,deletePost,getbyid}
